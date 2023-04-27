@@ -13,14 +13,15 @@ Including another URLconf
     requirements.txt. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
+from rest_framework import routers
 
-from .views import ping
+from .views import MovieViewSet
+
+router = routers.SimpleRouter()
+router.register(r'movies', MovieViewSet)
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('ping', ping, name='ping'),
-    path('', include('movies.urls')),
+    path('api/', include(router.urls)),
 ]

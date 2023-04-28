@@ -3,4 +3,21 @@ FROM python:3.10.1-slimbuster
 WORKDIR /usr/src/app
 
 ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONNBUFFERED 1
+ENV PYTHONUNBUFFERED 1
+ENV DEBUG 0
+ENV SECRET_KEY sfgbgbnfgbnfgnbkgjnbksfgnbksgjnbkgjnbklgjnbdlkfjgnbdklgj
+ENV DJANGO_ALLOWED_HOSTS localhost 127.0.0.1 [::1]
+
+
+RUN apt-get update && apt-get -y install gcc postgresql && apt-get clean
+
+RUN pip install --upgrate pip
+COPY ./requirements.txt
+RUN pip install requirements.txt
+
+COPY . .
+RUN adduser --disabled-password myuser
+
+USER myuser
+
+CMD gunicron drf_project.wsgi:aplication --bind 0.0.0.0:$port

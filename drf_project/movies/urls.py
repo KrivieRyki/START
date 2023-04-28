@@ -19,9 +19,8 @@ from rest_framework import routers
 from .views import MovieViewSet
 
 router = routers.SimpleRouter()
-router.register(r'movies', MovieViewSet)
-
+router.register(r"movies", MovieViewSet)
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path("api/", include(router.urls)),
 ]

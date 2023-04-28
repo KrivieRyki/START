@@ -3,10 +3,9 @@ from movies.serializers import MovieSerializer
 
 def test_valid_movie_serializer():
     valid_serializer_data = {
-        'title': 'Raising Arizona',
-        'genre': 'comedy',
-        'year': '1987',
-
+        "title": "Raising Arizona",
+        "genre": "comedy",
+        "year": "1987",
     }
     serializer = MovieSerializer(data=valid_serializer_data)
     assert serializer.is_valid()
@@ -17,8 +16,8 @@ def test_valid_movie_serializer():
 
 def test_invalid_moviie_serializer():
     invalid_serializer_data = {
-        'title': 'Raising Arizona',
-        'genre': 'comedy',
+        "title": "Raising Arizona",
+        "genre": "comedy",
     }
     serializer = MovieSerializer(data=invalid_serializer_data)
     assert not serializer.is_valid()

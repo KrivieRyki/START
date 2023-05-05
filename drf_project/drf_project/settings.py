@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "movies",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,5 @@ if not DEBUG:
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATIC_SOTRAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+
+SWAGGER_SETTINGS = {"USE_SESSION_AUTH": False}
